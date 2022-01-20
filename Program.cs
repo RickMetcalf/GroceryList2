@@ -37,28 +37,8 @@ namespace GroceryList2
                 switch (menuChoice)
                 {
                     case 1:
-                        Console.WriteLine("How many items d you want to add?");
-                        int totalItems = int.Parse(Console.ReadLine());
-                        for (int i = 0; i < totalItems; i++)
-                        {
-                            Console.WriteLine("What item are you adding?");
-                            string name = Console.ReadLine();
-                            Console.WriteLine("How many are you buying?");
-                            int quanity = int.Parse(Console.ReadLine());
-                            Console.WriteLine("What is the price of this item");
-                            double price = double.Parse(Console.ReadLine());
-                            double total = quanity * price;
-                            Grocery grocery = new Grocery
-                            {
-                                FoodName = name,
-                                FoodQuanity = quanity,
-                                PricePerItem = price,
-                                TotalPrice = total,
-                            };
-                            groceries.Add(grocery); 
-                            //groceries.Add(new Grocery(name, quanity, price, total));
-                        }
-                       
+                        AddGroceries(groceries);
+
                         break;
 
                     case 2:
@@ -91,6 +71,31 @@ namespace GroceryList2
             
 
 
+        }
+
+        private static void AddGroceries(List<Grocery> groceries)
+        {
+            Console.WriteLine("How many items do you want to add?");
+            int totalItems = int.Parse(Console.ReadLine());
+            for (int i = 0; i < totalItems; i++)
+            {
+                Console.WriteLine("What item are you adding?");
+                string name = Console.ReadLine();
+                Console.WriteLine("How many are you buying?");
+                int quanity = int.Parse(Console.ReadLine());
+                Console.WriteLine("What is the price of this item");
+                double price = double.Parse(Console.ReadLine());
+                double total = quanity * price;
+                Grocery grocery = new()
+                {
+                    FoodName = name,
+                    FoodQuanity = quanity,
+                    PricePerItem = price,
+                    TotalPrice = total,
+                };
+                groceries.Add(grocery);
+                //groceries.Add(new Grocery(name, quanity, price, total));
+            }
         }
     }
 }
