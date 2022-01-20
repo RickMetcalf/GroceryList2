@@ -78,6 +78,7 @@ namespace GroceryList2
             }
 
             Console.Read();
+            Console.WriteLine("Fuck Squid");
 
 
             
