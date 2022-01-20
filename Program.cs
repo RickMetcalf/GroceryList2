@@ -27,7 +27,7 @@ namespace GroceryList2
                     }
                     else
                     {
-                        if (menuChoice >= 1 && menuChoice <= 6)
+                        if (menuChoice >= 1 && menuChoice <= 7)
                         {
                             break;
                         }
@@ -46,19 +46,27 @@ namespace GroceryList2
                     case 2:
                         //Add Removal
                         break;
+
                     case 3:
                         //Add Change
                         break;
+
                     case 4:
                         ListInConsole(groceries);
                         break;
+
                     case 5:
                         PrintGroceryList(groceries);
                         break;
 
                     case 6:
+                        //Load list in
+                        break;
+
+                    case 7:
                         cont = false;
                         break;
+
                     default:
                         break;
 
