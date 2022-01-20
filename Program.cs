@@ -9,7 +9,7 @@ namespace GroceryList2
         {
             Console.WriteLine("Welcome to your grocery list");
             bool cont = true;
-            List<grocery> groceries = new List<grocery>();
+            List<Grocery> groceries = new List<Grocery>();
             while (cont)
             {
                 Console.WriteLine("What Would you like to do?\n\n1)Add an item\n2)Remove an item\n3)Change an item\n4)View your list\n5)Exit");
@@ -48,13 +48,21 @@ namespace GroceryList2
                             Console.WriteLine("What is the price of this item");
                             double price = double.Parse(Console.ReadLine());
                             double total = quanity * price;
-                            groceries.Add(new grocery(name, quanity, price, total));
+                            Grocery grocery = new Grocery
+                            {
+                                FoodName = name,
+                                FoodQuanity = quanity,
+                                PricePerItem = price,
+                                TotalPrice = total,
+                            };
+                            groceries.Add(grocery); 
+                            //groceries.Add(new Grocery(name, quanity, price, total));
                         }
-                        
+                       
                         break;
 
                     case 2:
-                        //Add removal
+                        //Add Removal
                         break;
                     case 3:
                         //Add Change
@@ -75,11 +83,10 @@ namespace GroceryList2
 
                 }
                 
+                
             }
 
             Console.Read();
-            Console.WriteLine("Fuck Squid");
-
 
             
 
