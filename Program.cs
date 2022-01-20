@@ -110,32 +110,63 @@ namespace GroceryList2
                 Console.WriteLine("What item are you adding?");
                 string name = Console.ReadLine();
                 Console.WriteLine("How many are you buying?");
-                int quanity = int.Parse(Console.ReadLine());
+                int quantity;
+                while (true)
+                {
+                    if (!int.TryParse(Console.ReadLine(), out quantity))
+                    {
+                        Console.WriteLine("Incorrect entry, please try again");
+                    }
+                    else
+                    {
+                        if (quantity >= 1)
+                        {
+                            break;
+                        }
+                        Console.WriteLine("Incorrect entry, please try again");
+                    }
+                }
                 Console.WriteLine("What is the price of this item");
-                double price = double.Parse(Console.ReadLine());
-                double total = quanity * price;
+                double price;
+                while (true)
+                {
+                    if (!double.TryParse(Console.ReadLine(), out price))
+                    {
+                        Console.WriteLine("Incorrect entry, please try again");
+                    }
+                    else
+                    {
+                        if (Math.Round(price, 2) > 0)
+                        {
+                            break;
+                        }
+                        Console.WriteLine("Incorrect entry, please try again");
+                    }
+                }
+                double total = Math.Round(quantity * price, 2);
                 Grocery grocery = new()
                 {
                     FoodName = name,
-                    FoodQuanity = quanity,
+                    FoodQuanity = quantity,
                     PricePerItem = price,
                     TotalPrice = total,
                 };
                 groceries.Add(grocery);
                 Console.WriteLine("Would you like to add another item? (yes or no)");
                 string menuChoice2 = Console.ReadLine();
-                menuChoice2.ToLower();
+                string menuChoiceLower = menuChoice2.ToLower();
                 bool goodChoice = true;
                 while(goodChoice)
                 {
-                    if (!menuChoice2.StartsWith("yes") && !menuChoice2.StartsWith("no"))
+                    if (!menuChoiceLower.StartsWith("yes") && !menuChoiceLower.StartsWith("no"))
                     {
                         Console.WriteLine("Incorrect entry, please try again");
                         menuChoice2 = Console.ReadLine();
+                        menuChoiceLower = menuChoice2.ToLower();
                     }
                     else 
                     {
-                        if (menuChoice2.StartsWith("y"))
+                        if (menuChoiceLower.StartsWith("y"))
                         {
                             goodChoice = false;
                             break;
